@@ -28,7 +28,7 @@ const studentSchema = new Schema({
   },
   background: { type: String, default: "" },
   image: { type: String, default: "https://i.imgur.com/r8bo8u7.png" },
-  cohort: { type: Schema.Types.ObjectId, ref: "Cohort" },
+  Cohort: { type: Schema.Types.ObjectId, ref: "Cohort" },
   projects: [{ type: Schema.Types.ObjectId, ref: "Project" }], // Assuming Project model exists
 });
 

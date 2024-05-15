@@ -34,3 +34,7 @@ const cohortSchema = new Schema({
 
 // Create and export the Cohort model
 module.exports = mongoose.model("Cohort", cohortSchema);
+
+//or?
+// const Cohort = model("Cohort", cohortSchema);
+// module.exports = Cohort;
