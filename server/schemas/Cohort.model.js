@@ -1,15 +1,23 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema, model } = require("mongoose");
 
 const cohortSchema = new Schema({
-  cohortSlug: { type: String, required: true, unique: true },
-  cohortName: { type: String, required: true },
+  cohortSlug: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  cohortName: {
+    type: String,
+    required: true,
+  },
   program: {
     type: String,
     enum: ["Web Dev", "UX/UI", "Data Analytics", "Cybersecurity"],
-    required: true,
   },
-  format: { type: String, enum: ["Full Time", "Part Time"], required: true },
+  format: {
+    type: String,
+    enum: ['Full Time,"Part Time'],
+  },
   campus: {
     type: String,
     enum: [
@@ -22,18 +30,33 @@ const cohortSchema = new Schema({
       "Lisbon",
       "Remote",
     ],
+  },
+  startDate: {
+    type: Date,
+    default: Date.now,
+  },
+  endDate: {
+    type: Date,
+  },
+  inProgress: {
+    type: Boolean,
+    default: false,
+  },
+  programManager: {
+    type: String,
     required: true,
   },
-  startDate: { type: Date, default: Date.now },
-  endDate: { type: Date },
-  inProgress: { type: Boolean, default: false },
-  programManager: { type: String, required: true },
-  leadTeacher: { type: String, required: true },
-  totalHours: { type: Number, default: 360 },
+  leadTeacher: {
+    type: String,
+    required: true,
+  },
+  totalHours: {
+    type: Number,
+  },
 });
 
-// Create and export the Cohort model
-module.exports = mongoose.model("Cohort", cohortSchema);
+const Cohort = model("Cohort", cohortSchema);
+module.exports = Cohort;
 
 //or?
 // const Cohort = model("Cohort", cohortSchema);
